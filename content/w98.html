@@ -1,1 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>picklenet - windows 98</title>
+  <style>
 
+  </style>
+</head>
+<body>
+
+<a href="index.html" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <h2 style="color: green; margin: 0;">mr pickle's network</h2>
+        <img id="logo" 
+             src="https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png" 
+             alt="logo" 
+             width="100">
+    </div>
+</a>
+    <h1>Windows 98 on the Web</h1>
+    <p>with Windows 98 on the Web you can enjoy the classic feeling of windows 98 in your browser and you can use it as a offline file.</p>
+    <b>Credits:</b>
+    <p>Rahul Mehra for making the file</p>
+    <p>GalaxyDev for the Port</p>
+	<a href="https://postimg.cc/yJyX3BBM" target="_blank"><img src="https://i.postimg.cc/TPZkSYs3/image.png" width="500"></a>
+<p></p>
+<button onclick="downloadFile()">Download File</button>
+<script>
+    // -------------------------
+    //  LOGO ANIMATION
+    // -------------------------
+    const logo = document.getElementById("logo");
+
+    const firstFull = "https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png";
+    const secondFull = "https://i.postimg.cc/XpkKVKNx/Untitled-design-3-removebg-preview(1).png";
+
+    const firstFile = "Untitled-design-2-removebg-preview(1).png";
+    const secondFile = "Untitled-design-3-removebg-preview(1).png";
+
+    setInterval(() => {
+        if (logo.src.endsWith(firstFile)) {
+            logo.src = secondFull;
+        } else {
+            logo.src = firstFull;
+        }
+    }, 1000);
+<script>
+function downloadFile() {
+    // Path: content/<folder>/<file>
+    const filePath = "content/html.gd98";
+
+    // Create a hidden download link
+    const a = document.createElement("a");
+    a.href = filePath;
+    a.download = filePath.split("/").pop(); // filename only
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+</script>
+</body>
+</html>
