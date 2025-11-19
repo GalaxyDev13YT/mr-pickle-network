@@ -1,115 +1,136 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>mr pickle's network - demo v1.0</title>
-  <style>
 
-  </style>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>mr pickle's network - demo v1.0</title>
+    <style>
+
+    </style>
 </head>
+
 <body>
 
-<div style="display: flex; align-items: center; gap: 15px;">
-    <h1 style="color: green;">mr pickle's network</h1>
-    <img id="logo" 
-         src="https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png" 
-         alt="logo" 
-         width="150">
-</div>
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <h1 style="color: green;">mr pickle's network</h1>
+        <img id="logo" src="https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png" alt="logo" width="150">
+    </div>
 
-<div>
-    <button onclick="openRandomPage()">random page</button>
-</div>
+    <div>
+        <button onclick="openRandomPage()">random page</button>
+    </div>
 
-<h2>Search The Network</h2>
-<input type="text" id="searchBox" placeholder="Search..." onkeyup="filterResults()">
+    <h2>Search The Network</h2>
+    <input type="text" id="searchBox" placeholder="Search..." onkeyup="filterResults()">
 
-<div id="results"></div>
+    <div id="results"></div>
 
-<footer>
-  first real project this year - v1.0 - last updated: 11/18/2025 - date created: 11/18/2025
-</footer>
+    <footer>
+        first real project this year - v1.0 - last updated: 11/18/2025 - date created: 11/18/2025
+    </footer>
 
-<script>
-    // -------------------------
-    //  LOGO ANIMATION
-    // -------------------------
-    const logo = document.getElementById("logo");
+    <script>
+        // -------------------------
+        //  LOGO ANIMATION
+        // -------------------------
+        const logo = document.getElementById("logo");
 
-    const firstFull = "https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png";
-    const secondFull = "https://i.postimg.cc/XpkKVKNx/Untitled-design-3-removebg-preview(1).png";
+        const firstFull = "https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png";
+        const secondFull = "https://i.postimg.cc/XpkKVKNx/Untitled-design-3-removebg-preview(1).png";
 
-    const firstFile = "Untitled-design-2-removebg-preview(1).png";
-    const secondFile = "Untitled-design-3-removebg-preview(1).png";
+        const firstFile = "Untitled-design-2-removebg-preview(1).png";
+        const secondFile = "Untitled-design-3-removebg-preview(1).png";
 
-    setInterval(() => {
-        if (logo.src.endsWith(firstFile)) {
-            logo.src = secondFull;
-        } else {
-            logo.src = firstFull;
+        setInterval(() => {
+            if (logo.src.endsWith(firstFile)) {
+                logo.src = secondFull;
+            } else {
+                logo.src = firstFull;
+            }
+        }, 1000);
+
+        const pages = [
+            "README.md",
+            "webOS.html",
+            "w98.html",
+            "pe.html",
+            "mpe.html",
+            "off.html"
+        ];
+
+        function openRandomPage() {
+            const random = pages[Math.floor(Math.random() * pages.length)];
+            window.location.href = "content/" + random;
         }
-    }, 1000);
-
-    const pages = [
-        "README.md",
-        "webOS.html",
-        "w98.html",
-        "pe.html",
-        "mpe.html",
-        "off.html"
-    ];
-
-    function openRandomPage() {
-        const random = pages[Math.floor(Math.random() * pages.length)];
-        window.location.href = "content/" + random;
-    }
 
 
-    // -------------------------
-    //  SEARCH SYSTEM
-    // -------------------------
-    const files = [
-        { name: "README.md", url: "README.md" },
-        { name: "make your own game site!", url: "content/myogs.html" },
-        { name: "Scrblz Hideout", url: "content/webOS.html" },
-        { name: "windows 98", url: "content/w98.html" },
-        { name: "pizza edition", url: "content/pe.html" },
-        { name: "mr pickle's extras", url: "content/mpe.html" },
-        { name: "off rpg", url: "content/off.html" }
-    ];
+        // -------------------------
+        //  SEARCH SYSTEM
+        // -------------------------
+        const files = [{
+                name: "README.md",
+                url: "README.md",
+                download: true
+            },
+            {
+                name: "make your own game site!",
+                url: "content/myogs.html"
+            },
+            {
+                name: "Scrblz Hideout",
+                url: "content/webOS.html"
+            },
+            {
+                name: "windows 98",
+                url: "content/w98.html"
+            },
+            {
+                name: "pizza edition",
+                url: "content/pe.html"
+            },
+            {
+                name: "mr pickle's extras",
+                url: "content/mpe.html"
+            },
+            {
+                name: "off rpg",
+                url: "content/off.html"
+            }
+        ];
 
-    function showAll() {
-        let results = document.getElementById("results");
-        results.innerHTML = "";
+        function showAll() {
+            let results = document.getElementById("results");
+            results.innerHTML = "";
 
-        files.forEach(f => {
-            results.innerHTML += `
-                <div class="result">
-                    <a href="${f.url}">${f.name}</a>
-                </div>
-            `;
-        });
-    }
-
-    function filterResults() {
-        let query = document.getElementById("searchBox").value.toLowerCase();
-        let results = document.getElementById("results");
-        results.innerHTML = "";
-
-        files
-            .filter(f => f.name.toLowerCase().includes(query))
-            .forEach(f => {
+            files.forEach(f => {
                 results.innerHTML += `
-                    <div class="result">
-                        <a href="${f.url}">${f.name}</a>
-                    </div>
-                `;
+        <div class="result">
+            <a href="${f.url}" ${f.download ? "download" : ""}>${f.name}</a>
+        </div>
+        `;
             });
-    }
+        }
 
-    showAll();
-</script>
+        function filterResults() {
+            let query = document.getElementById("searchBox").value.toLowerCase();
+            let results = document.getElementById("results");
+            results.innerHTML = "";
+
+            files
+                .filter(f => f.name.toLowerCase().includes(query))
+                .forEach(f => {
+                    results.innerHTML += `
+            <div class="result">
+                <a href="${f.url}" ${f.download ? "download" : ""}>${f.name}</a>
+            </div>
+            `;
+                });
+        }
+
+        showAll();
+    </script>
 
 </body>
+
 </html>
