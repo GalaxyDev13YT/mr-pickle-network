@@ -24,8 +24,8 @@ GalaxyDev - Site Creation and Scripter
 
 ```
 Resource #1
-  Name: README.txt
-  File Path: README.txt
+  Name: README.md
+  File Path: README.md
   Creator: GalaxyDev
   Date Uploaded: 11/18/2025
 ```
