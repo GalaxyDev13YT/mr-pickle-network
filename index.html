@@ -17,8 +17,22 @@
         <img id="logo" src="https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png" alt="logo" width="150">
     </div>
 
+    <div style="position: relative; width: 250px;">
+        <input type="text" id="urlBar" placeholder="type a url like: pn.readme.pickle" oninput="updateSuggestions()" onkeydown="handleUrlKey(event)" style="width: 100%;">
+
+        <div id="suggestions" style="
+            position: absolute;
+            background: white;
+            border: 1px solid #888;
+            width: 100%;
+            display: none;
+            z-index: 10;
+         ">
+        </div>
+    </div>
+    <p>-------------------------------------------------</p>
     <div>
-        <button onclick="openRandomPage()">random page</button>
+        <button onclick="openRandomPage()">feeling lucky?</button>
     </div>
 
     <h2>Search The Network</h2>
@@ -129,6 +143,96 @@
         }
 
         showAll();
+        // -------------------------
+        //  URL BAR SYSTEM
+        // -------------------------
+        const urlMap = {
+            "pn.w98.pickle": "content/w98.html",
+            "pn.webos.pickle": "webOS.html",
+            "pn.pe.pickle": "pe.html",
+            "pn.mpe.pickle": "mpe.html",
+            "pn.off.pickle": "off.html",
+            "pn.readme.pickle": "README.md"
+        };
+
+        let suggestionIndex = -1;
+
+        function updateSuggestions() {
+            const input = document.getElementById("urlBar");
+            const suggestionsBox = document.getElementById("suggestions");
+
+            const typed = input.value.toLowerCase();
+            const matches = Object.keys(urlMap).filter(u => u.includes(typed));
+
+            if (typed === "" || matches.length === 0) {
+                suggestionsBox.style.display = "none";
+                return;
+            }
+
+            suggestionsBox.innerHTML = "";
+            suggestionIndex = -1;
+
+            matches.forEach(url => {
+                const div = document.createElement("div");
+                div.textContent = url;
+                div.style.padding = "5px";
+                div.style.cursor = "pointer";
+
+                div.onclick = () => {
+                    input.value = url;
+                    suggestionsBox.style.display = "none";
+                    window.location.href = urlMap[url];
+                };
+
+                suggestionsBox.appendChild(div);
+            });
+
+            suggestionsBox.style.display = "block";
+        }
+
+        function handleUrlKey(event) {
+            const suggestionsBox = document.getElementById("suggestions");
+            const items = suggestionsBox.children;
+
+            // Arrow down
+            if (event.key === "ArrowDown") {
+                event.preventDefault();
+                if (suggestionIndex < items.length - 1) suggestionIndex++;
+                highlightSuggestion(items);
+            }
+
+            // Arrow up
+            if (event.key === "ArrowUp") {
+                event.preventDefault();
+                if (suggestionIndex > -1) suggestionIndex--;
+                highlightSuggestion(items);
+            }
+
+            // Enter key
+            if (event.key === "Enter") {
+                const typed = document.getElementById("urlBar").value.trim().toLowerCase();
+
+                // If a suggestion is selected
+                if (suggestionIndex >= 0 && items[suggestionIndex]) {
+                    const selected = items[suggestionIndex].textContent;
+                    window.location.href = urlMap[selected];
+                    return;
+                }
+
+                // If typed URL is exact
+                if (urlMap[typed]) {
+                    window.location.href = urlMap[typed];
+                } else {
+                    alert("404: Page not found in mr pickle's network.");
+                }
+            }
+        }
+
+        function highlightSuggestion(items) {
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.background = (i === suggestionIndex) ? "#bde0fe" : "#fff";
+            }
+        }
     </script>
 
 </body>
