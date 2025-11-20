@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <body style="background: white;">
+    <title>%HEADER%</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <h1 style="color: green;">mr pickle's network</h1>
+        <img id="logo" src="https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png" alt="logo" width="150">
+    </div>
+
+    <div style="position: relative; width: 250px;">
+        <input type="text" id="urlBar" placeholder="type a url like: pn.readme.pickle" oninput="updateSuggestions()" onkeydown="handleUrlKey(event)" style="width: 100%;">
+
+        <div id="suggestions" style="
+            position: absolute;
+            background: white;
+            border: 1px solid #888;
+            width: 100%;
+            display: none;
+            z-index: 10;
+         ">
+        </div>
+    </div>
+    <script>
+        // -------------------------
+        //  LOGO ANIMATION
+        // -------------------------
+        const logo = document.getElementById("logo");
+
+        const firstFull = "https://i.postimg.cc/fbyBfF8P/Untitled-design-2-removebg-preview(1).png";
+        const secondFull = "https://i.postimg.cc/XpkKVKNx/Untitled-design-3-removebg-preview(1).png";
+
+        const firstFile = "Untitled-design-2-removebg-preview(1).png";
+        const secondFile = "Untitled-design-3-removebg-preview(1).png";
+
+        setInterval(() => {
+            if (logo.src.endsWith(firstFile)) {
+                logo.src = secondFull;
+            } else {
+                logo.src = firstFull;
+            }
+        }, 1000);
+
+        const pages = [
+            "README.md",
+            "webOS.html",
+            "w98.html",
+            "pe.html",
+            "mpe.html",
+            "off.html"
+        ];
+
+        function openRandomPage() {
+            const random = pages[Math.floor(Math.random() * pages.length)];
+            window.location.href = "content/" + random;
+        }
+
+
+        // -------------------------
+        //  SEARCH SYSTEM
+        // -------------------------
+        const files = [{
+                name: "README.md",
+                url: "README.md",
+                download: true
+            },
+            {
+                name: "make your own game site!",
+                url: "content/myogs.html"
+            },
+            {
+                name: "Scrblz Hideout",
+                url: "content/webOS.html"
+            },
+            {
+                name: "windows 98",
+                url: "content/w98.html"
+            },
+            {
+                name: "pizza edition",
+                url: "content/pe.html"
+            },
+            {
+                name: "mr pickle's extras",
+                url: "content/mpe.html"
+            },
+            {
+                name: "off rpg",
+                url: "content/off.html"
+            }
+        ];
+
+        function showAll() {
+            let results = document.getElementById("results");
+            results.innerHTML = "";
+
+            files.forEach(f => {
+                results.innerHTML += `
+        <div class="result">
+            <a href="${f.url}" ${f.download ? "download" : ""}>${f.name}</a>
+        </div>
+        `;
+            });
+        }
+
+        function filterResults() {
+            let query = document.getElementById("searchBox").value.toLowerCase();
+            let results = document.getElementById("results");
+            results.innerHTML = "";
+
+            files
+                .filter(f => f.name.toLowerCase().includes(query))
+                .forEach(f => {
+                    results.innerHTML += `
+            <div class="result">
+                <a href="${f.url}" ${f.download ? "download" : ""}>${f.name}</a>
+            </div>
+            `;
+                });
+        }
+
+        showAll();
+        // -------------------------
+        //  URL BAR SYSTEM
+        // -------------------------
+        const urlMap = {
+            "pn.w98.pickle": "content/w98.html",
+            "pn.pickle": "index.html",
+            "pn.webos.pickle": "content/webOS.html",
+            "pn.pe.pickle": "content/pe.html",
+            "pn.mpe.pickle": "content/mpe.html",
+            "pn.off.pickle": "content/off.html",
+            "pn.readme.pickle": "README.md"
+        };
+
+        let suggestionIndex = -1;
+
+        function updateSuggestions() {
+            const input = document.getElementById("urlBar");
+            const suggestionsBox = document.getElementById("suggestions");
+
+            const typed = input.value.toLowerCase();
+            const matches = Object.keys(urlMap).filter(u => u.includes(typed));
+
+            if (typed === "" || matches.length === 0) {
+                suggestionsBox.style.display = "none";
+                return;
+            }
+
+            suggestionsBox.innerHTML = "";
+            suggestionIndex = -1;
+
+            matches.forEach(url => {
+                const div = document.createElement("div");
+                div.textContent = url;
+                div.style.padding = "5px";
+                div.style.cursor = "pointer";
+
+                div.onclick = () => {
+                    input.value = url;
+                    suggestionsBox.style.display = "none";
+                    window.location.href = urlMap[url];
+                };
+
+                suggestionsBox.appendChild(div);
+            });
+
+            suggestionsBox.style.display = "block";
+        }
+
+        function handleUrlKey(event) {
+            const suggestionsBox = document.getElementById("suggestions");
+            const items = suggestionsBox.children;
+
+            // Arrow down
+            if (event.key === "ArrowDown") {
+                event.preventDefault();
+                if (suggestionIndex < items.length - 1) suggestionIndex++;
+                highlightSuggestion(items);
+            }
+
+            // Arrow up
+            if (event.key === "ArrowUp") {
+                event.preventDefault();
+                if (suggestionIndex > -1) suggestionIndex--;
+                highlightSuggestion(items);
+            }
+
+            // Enter key
+            if (event.key === "Enter") {
+                const typed = document.getElementById("urlBar").value.trim().toLowerCase();
+
+                // If a suggestion is selected
+                if (suggestionIndex >= 0 && items[suggestionIndex]) {
+                    const selected = items[suggestionIndex].textContent;
+                    window.location.href = urlMap[selected];
+                    return;
+                }
+
+                // If typed URL is exact
+                if (urlMap[typed]) {
+                    window.location.href = urlMap[typed];
+                } else {
+                    alert("404: Page not found in mr pickle's network.");
+                }
+            }
+        }
+
+        function highlightSuggestion(items) {
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.background = (i === suggestionIndex) ? "#bde0fe" : "#fff";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
