@@ -1,23 +1,68 @@
-```                                                                                    
-  /$$$$$$  /$$   /$$  /$$$$$$   /$$$$$$   /$$$$$$$  /$$$$$$  /$$   /$$ /$$$$$$$   /$$$$$$$
- /$$__  $$| $$  | $$ /$$__  $$ /$$__  $$ /$$_____/ /$$__  $$| $$  | $$| $$__  $$ /$$__  $$
-| $$  \ $$| $$  | $$| $$  \__/| $$$$$$$$|  $$$$$$ | $$  \ $$| $$  | $$| $$  \ $$| $$  | $$
-| $$  | $$| $$  | $$| $$      | $$_____/ \____  $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$
-| $$$$$$$/|  $$$$$$/| $$      |  $$$$$$$ /$$$$$$$/|  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$
-| $$____/  \______/ |__/       \_______/|_______/  \______/  \______/ |__/  |__/ \_______/
-| $$                                                                                      
-| $$                                                                                      
-|__/                                                                                      
-```                                                                                                                                                                                     
-the puresound libary is a huge libary of high quality music
+    __       __                  _______   __            __        __          __                __    __             __                                        __       
+    |  \     /  \                |       \ |  \          |  \      |  \        |  \              |  \  |  \           |  \                                      |  \      
+    | $$\   /  $$  ______        | $$$$$$$\ \$$  _______ | $$   __ | $$  ______| $$_______       | $$\ | $$  ______  _| $$_    __   __   __   ______    ______  | $$   __ 
+    | $$$\ /  $$$ /      \       | $$__/ $$|  \ /       \| $$  /  \| $$ /      \\$/       \      | $$$\| $$ /      \|   $$ \  |  \ |  \ |  \ /      \  /      \ | $$  /  \
+    | $$$$\  $$$$|  $$$$$$\      | $$    $$| $$|  $$$$$$$| $$_/  $$| $$|  $$$$$$\|  $$$$$$$      | $$$$\ $$|  $$$$$$\\$$$$$$  | $$ | $$ | $$|  $$$$$$\|  $$$$$$\| $$_/  $$
+    | $$\$$ $$ $$| $$   \$$      | $$$$$$$ | $$| $$      | $$   $$ | $$| $$    $$ \$$    \       | $$\$$ $$| $$    $$ | $$ __ | $$ | $$ | $$| $$  | $$| $$   \$$| $$   $$ 
+    | $$ \$$$| $$| $$            | $$      | $$| $$_____ | $$$$$$\ | $$| $$$$$$$$ _\$$$$$$\      | $$ \$$$$| $$$$$$$$ | $$|  \| $$_/ $$_/ $$| $$__/ $$| $$      | $$$$$$\ 
+    | $$  \$ | $$| $$            | $$      | $$ \$$     \| $$  \$$\| $$ \$$     \|       $$      | $$  \$$$ \$$     \  \$$  $$ \$$   $$   $$ \$$    $$| $$      | $$  \$$\
+    \$$      \$$ \$$             \$$       \$$  \$$$$$$$ \$$   \$$ \$$  \$$$$$$$ \$$$$$$$        \$$   \$$  \$$$$$$$   \$$$$   \$$$$$\$$$$   \$$$$$$  \$$       \$$   \$$           
 
-[https://galaxydev13yt.github.io/puresound/](https://galaxydev13yt.github.io/puresound/)
-v1.2
+[https://galaxydev13yt.github.io/mr-pickle-network/](https://galaxydev13yt.github.io/mr-pickle-network/)
+v.b2
 
-**𝗖𝗥𝗘𝗗𝗜𝗧𝗦**
+    _______  ______ _______ ______  _____ _______ _______
+    |       |_____/ |______ |     \   |      |    |______
+    |_____  |    \_ |______ |_____/ __|__    |    ______|
 
-**GalaxyDev** - Site Creation and Scripter
+GalaxyDev - Site Creation and Scripter
 
-**Kudub** - File management and storage
 
-*All Individual tracks and albums featured are the property of their respective creators.*
+
+
+    _______ _____ _______ _______      _____ __   _ _______  _____ 
+    |______   |      |    |______        |   | \  | |______ |     |
+    ______| __|__    |    |______      __|__ |  \_| |       |_____|
+
+```
+Resource #1
+  Name: README.md
+  File Path: README.md
+  Creator: GalaxyDev
+  Date Uploaded: 11/18/2025
+```
+```  
+Resource #2
+  Name: WebOS
+  File Path: content/webOS.html
+  Creator: Scrblz
+  Date Uploaded: 11/18/2025
+```
+```  
+Resource #3
+  Name: Windows 98
+  File Path: content/w98.html
+  Creator: Rahul Mehra
+  Date Uploaded: 11/18/2025
+```
+```
+Resource #4
+  Name: Pizza Edition
+  File Path: content/PE.html
+  Creator: Dean
+  Date Uploaded: 11/18/2025
+```
+```    
+Resource #5
+  Name: Mr. Pickle's Extras
+  File Path: content/mpe.html
+  Creator: GalaxyDev
+  Date Uploaded: 11/18/2025
+```
+```
+Resource #6
+  Name: OFF RPG
+  File Path: content/off.html
+  Creator: Unproductive Fun Time
+  Date Uploaded: 11/18/2025
+```
